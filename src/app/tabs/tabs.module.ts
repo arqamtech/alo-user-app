@@ -6,6 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
+import { HomeComponent } from '../Components/MainTabs/home/home.component';
+import { NavigateComponent } from '../Components/MainTabs/navigate/navigate.component';
+import { ExploreComponent } from '../Components/MainTabs/explore/explore.component';
+import { CartComponent } from '../Components/MainTabs/cart/cart.component';
+import { ProfileComponent } from '../Components/MainTabs/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -14,6 +19,13 @@ import { TabsPage } from './tabs.page';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [
+    HomeComponent,
+    ExploreComponent,
+    NavigateComponent,
+    CartComponent,
+    ProfileComponent,
+    TabsPage
+  ]
 })
-export class TabsPageModule {}
+export class TabsPageModule { }

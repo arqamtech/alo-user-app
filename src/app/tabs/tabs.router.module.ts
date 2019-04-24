@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { HomeComponent } from '../Components/MainTabs/home/home.component';
+import { ExploreComponent } from '../Components/MainTabs/explore/explore.component';
+import { NavigateComponent } from '../Components/MainTabs/navigate/navigate.component';
+import { CartComponent } from '../Components/MainTabs/cart/cart.component';
+import { ProfileComponent } from '../Components/MainTabs/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -8,42 +13,60 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'home',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            component: HomeComponent,
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'explore',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            component: ExploreComponent
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'navigate',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            component: NavigateComponent,
+          }
+        ]
+      },
+      {
+        path: 'cart',
+        children: [
+          {
+            path: '',
+            component: CartComponent
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            component: ProfileComponent
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
@@ -54,4 +77,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

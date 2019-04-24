@@ -14,6 +14,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseCred } from './firebaseCred';
+import { LoginGGuard } from './Guards/login-g.guard';
+
 firebase.initializeApp(firebaseCred);
 
 
@@ -31,6 +33,7 @@ firebase.initializeApp(firebaseCred);
   providers: [
     StatusBar,
     SplashScreen,
+    LoginGGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
