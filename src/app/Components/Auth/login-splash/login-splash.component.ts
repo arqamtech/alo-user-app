@@ -16,6 +16,6 @@ export class LoginSplashComponent implements OnInit {
 
 
   gtLogin() {
-    this.navCtrl.navigateForward("/login")
+    this.navCtrl.navigateForward("/auth/login")
   }
 }

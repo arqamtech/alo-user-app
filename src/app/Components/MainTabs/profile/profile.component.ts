@@ -8,10 +8,10 @@ import { LoginGGuard } from 'src/app/Guards/login-g.guard';
 })
 export class ProfileComponent implements OnInit {
 
-  uid = this.getUid.getUid();
+  uid = this.loginService.getUid();
 
   constructor(
-    public getUid: LoginGGuard,
+    public loginService: LoginGGuard,
   ) {
     console.log(this.uid);
   }
@@ -19,4 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  signOut() {
+    this.loginService.signOut();
+  }
 }

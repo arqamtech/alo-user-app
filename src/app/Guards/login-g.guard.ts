@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, } fro
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { ToastController } from '@ionic/angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class LoginGGuard implements CanActivate {
   constructor(
     private router: Router,
     public toastCtrl: ToastController,
+    public db: AngularFireDatabase,
   ) { }
 
   canActivate(
@@ -33,8 +35,15 @@ export class LoginGGuard implements CanActivate {
 
   }
 
+
   getUid() {
     return firebase.auth().currentUser.uid;
+  }
+
+  signOut() {
+    firebase.auth().signOut().then(() => {
+      this.router.navigate(['/auth']);
+    })
   }
 
   //Toast Function
