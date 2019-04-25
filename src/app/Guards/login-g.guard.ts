@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class LoginGGuard implements CanActivate {
     private router: Router,
     public toastCtrl: ToastController,
     public db: AngularFireDatabase,
+    public alertCtrl: AlertController,
   ) { }
 
   canActivate(
@@ -39,6 +40,43 @@ export class LoginGGuard implements CanActivate {
   getUid() {
     return firebase.auth().currentUser.uid;
   }
+
+  getUser() {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user: firebase.User) => {
+        if (user) {
+
+          this.db.object(`User Data/Users/${user.uid}`).valueChanges().subscribe(snap => {
+            let temp: any = snap;
+            resolve(temp)
+          });
+        }
+      });
+    });
+
+  }
+
+  async confirmSignout() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm logout ? ',
+      buttons: [
+        {
+          text: 'No, Its a mistake',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Logout',
+          handler: () => {
+            this.signOut();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
 
   signOut() {
     firebase.auth().signOut().then(() => {

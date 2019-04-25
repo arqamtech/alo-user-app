@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { HomeComponent } from '../Components/MainTabs/home/home.component';
@@ -6,6 +6,9 @@ import { ExploreComponent } from '../Components/MainTabs/explore/explore.compone
 import { NavigateComponent } from '../Components/MainTabs/navigate/navigate.component';
 import { CartComponent } from '../Components/MainTabs/cart/cart.component';
 import { ProfileComponent } from '../Components/MainTabs/profile/profile.component';
+import { YourOrdersComponent } from '../Components/ProfilePages/your-orders/your-orders.component';
+import { FaqsComponent } from '../Components/ProfilePages/faqs/faqs.component';
+import { ContactUsComponent } from '../Components/ProfilePages/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -59,10 +62,22 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/cart',
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'tabs/profile/y-orders',
+    component: YourOrdersComponent,
+  },
+  {
+    path: 'tabs/profile/faqs',
+    component: FaqsComponent,
+  },
+  {
+    path: 'tabs/profile/contact-us',
+    component: ContactUsComponent,
   },
   {
     path: '',

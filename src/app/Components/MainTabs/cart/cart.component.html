@@ -1,3 +1,16 @@
-<p>
-  cart works!
-</p>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button fill="clear">Rs.{{cartValue}}</ion-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <!-- {{items | json}} -->
+
+  <app-loader *ngIf="loading1"></app-loader>
+</ion-content>

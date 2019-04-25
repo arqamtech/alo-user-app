@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginGGuard } from 'src/app/Guards/login-g.guard';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -8,18 +9,33 @@ import { LoginGGuard } from 'src/app/Guards/login-g.guard';
 })
 export class ProfileComponent implements OnInit {
 
-  uid = this.loginService.getUid();
-
+  user;
   constructor(
     public loginService: LoginGGuard,
+    public navCtrl: NavController,
   ) {
-    console.log(this.uid);
+    this.loginService.getUser().then((res) => {
+      this.user = res;
+    });
+
   }
 
   ngOnInit() {
   }
 
+
+  gtOrders() {
+    this.navCtrl.navigateForward('/tabs/profile/y-orders');
+  }
+  gtContactUs() {
+    this.navCtrl.navigateForward('/tabs/profile/contact-us');
+  }
+  gtFaqs() {
+    this.navCtrl.navigateForward('/tabs/profile/faqs');
+  }
+
+
   signOut() {
-    this.loginService.signOut();
+    this.loginService.confirmSignout();
   }
 }

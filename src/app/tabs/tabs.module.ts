@@ -11,6 +11,10 @@ import { NavigateComponent } from '../Components/MainTabs/navigate/navigate.comp
 import { ExploreComponent } from '../Components/MainTabs/explore/explore.component';
 import { CartComponent } from '../Components/MainTabs/cart/cart.component';
 import { ProfileComponent } from '../Components/MainTabs/profile/profile.component';
+import { YourOrdersComponent } from '../Components/ProfilePages/your-orders/your-orders.component';
+import { ContactUsComponent } from '../Components/ProfilePages/contact-us/contact-us.component';
+import { FaqsComponent } from '../Components/ProfilePages/faqs/faqs.component';
+import { LoaderComponent } from '../Components/UI/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -21,11 +25,15 @@ import { ProfileComponent } from '../Components/MainTabs/profile/profile.compone
   ],
   declarations: [
     HomeComponent,
+    LoaderComponent,
     ExploreComponent,
     NavigateComponent,
     CartComponent,
     ProfileComponent,
-    TabsPage
+    TabsPage,
+    YourOrdersComponent,
+    ContactUsComponent,
+    FaqsComponent,
   ]
 })
 export class TabsPageModule { }

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>FAQ's</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="mainCard">
+
+    <ion-card *ngFor="let q of faqs">
+      <ion-toolbar color="primary">
+        <ion-title>{{q.Question}}</ion-title>
+      </ion-toolbar>
+      <ion-card-content>
+        <h2>{{q.Answer}}</h2>
+      </ion-card-content>
+    </ion-card>
+
+
+  </div>
+
+</ion-content>
